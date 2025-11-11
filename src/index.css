@@ -15,6 +15,9 @@
   html {
     font-family: var(--font-sans);
     font-feature-settings: "rlig" 1, "calt" 1;
+    scroll-behavior: smooth;
+    background-color: #000;
+    color-scheme: dark;
   }
 
   body {
@@ -22,7 +25,24 @@
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+/* Neon hover glow for tagline */
+@layer components {
+  .neon-text {
+    @apply relative inline-block; 
+    text-shadow: 0 0 0 rgba(168,85,247,0), 0 0 0 rgba(56,189,248,0);
+    transition: text-shadow 300ms ease, color 300ms ease;
+  }
+  .neon-text:hover {
+    color: #fff;
+    text-shadow:
+      0 0 6px rgba(168,85,247,0.8),
+      0 0 20px rgba(168,85,247,0.6),
+      0 0 40px rgba(56,189,248,0.5),
+      0 0 60px rgba(56,189,248,0.35);
+  }
+}
+
+/* Simple fade/slide keyframes if needed by utility classes */
 @layer utilities {
   .animate-in {
     animation-name: animateIn;
