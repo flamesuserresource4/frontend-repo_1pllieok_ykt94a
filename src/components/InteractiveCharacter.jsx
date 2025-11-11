@@ -26,7 +26,7 @@ const InteractiveCharacter = () => {
         </motion.div>
         <div className="order-1 md:order-2">
           <h3 className="text-2xl sm:text-3xl font-bold">Live Anime Motion</h3>
-          <p className="mt-3 text-white/70">The hero reacts to your cursor; this section breathes with parallax. Its like the character is training as you scroll.</p>
+          <p className="mt-3 text-white/70">The hero reacts to your cursor; this section breathes with parallax. It's like the character is training as you scroll.</p>
           <ul className="mt-6 space-y-3 text-white/80">
             <li>• Subtle parallax depth for immersion</li>
             <li>• Smooth, GPU-friendly animations</li>

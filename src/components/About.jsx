@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, HeartHandshake, Lightbulb, Shirt } from 'lucide-react'
+import { Sparkles, Handshake, Lightbulb, Shirt } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -35,7 +35,7 @@ const About = () => {
           {[
             { icon: Lightbulb, title: 'Concept', text: 'Inspired by growth, grit, and neon city nights.' },
             { icon: Shirt, title: 'Fabric', text: 'Premium cotton blend. Soft, breathable, durable.' },
-            { icon: HeartHandshake, title: 'Fit', text: 'Athletic comfort fit with room to move.' },
+            { icon: Handshake, title: 'Fit', text: 'Athletic comfort fit with room to move.' },
             { icon: Sparkles, title: 'Care', text: 'Colorfast print. Easy care, long lasting.' },
           ].map((item, i) => (
             <motion.div

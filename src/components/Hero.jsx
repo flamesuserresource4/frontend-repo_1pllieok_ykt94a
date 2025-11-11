@@ -1,6 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useRef, Suspense, lazy } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import Spline from '@splinetool/react-spline'
+
+// Lazy-load Spline so any loading/errors don't block the rest of the page
+const Spline = typeof window !== 'undefined' ? lazy(() => import('@splinetool/react-spline')) : null
 
 const Hero = () => {
   const containerRef = useRef(null)
@@ -28,14 +30,18 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] w-full overflow-hidden bg-black text-white" ref={containerRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      {/* 3D Spline background */}
-      <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/wwTRdG1D9CkNs368/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+      {/* 3D Spline background (lazy, non-blocking) */}
+      <div className="absolute inset-0 z-0">
+        {Spline ? (
+          <Suspense fallback={null}>
+            <Spline scene="https://prod.spline.design/wwTRdG1D9CkNs368/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+          </Suspense>
+        ) : null}
       </div>
       {/* gradient veil to blend with brand colors; pointer events disabled so Spline stays interactive */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/80" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center px-6 pt-28 pb-24 text-center">
+      <div className="relative z-20 mx-auto flex max-w-7xl flex-col items-center px-6 pt-28 pb-24 text-center">
         {/* Shirt display with hover zoom and cursor-reactive tilt */}
         <motion.div
           style={{ rotateX: rx, rotateY: ry, x: tX, y: tY }}
